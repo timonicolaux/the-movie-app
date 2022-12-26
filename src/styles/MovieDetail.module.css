@@ -1,0 +1,74 @@
+.header {
+  background-color: #38868e;
+  height: 180px;
+}
+
+.logo {
+  height: 150px;
+  background-image: url("../assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.movieTitle {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+  margin-left: 5px;
+}
+
+.movieContainer {
+  display: flex;
+  position: relative;
+  top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.moviePosterContainer {
+}
+
+.movieInfoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.movieTitleContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.runtime {
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.genreContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.genre {
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.movieOverviewContainer {
+  margin-left: 25px;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+}
+
+.subtitle {
+  font-family: var(--main-font);
+  color: var(--lightblack);
+  font-size: 20px;
+}

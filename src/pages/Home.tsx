@@ -1,7 +1,8 @@
 import React from "react";
-import Category from "../../components/Category";
-import styles from "../../styles/Home.module.css";
-import { Categories } from "../../types/types";
+import Category from "../components/Category";
+import SearchBar from "../components/SearchBar";
+import styles from "../styles/Home.module.css";
+import { Categories } from "../types/types";
 
 const Home = () => {
   const categories: Categories[] = [
@@ -13,7 +14,11 @@ const Home = () => {
   return (
     <>
       <div className={styles.mainContainer}>
-        <div className={styles.header}></div>
+        <div className={styles.header}>
+          <div className={styles.logo}></div>
+          <SearchBar />
+        </div>
+
         {categories?.map((elt, index) => (
           <div key={index}>
             <Category category={elt.category} title={elt.title} />

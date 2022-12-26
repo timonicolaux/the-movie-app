@@ -11,6 +11,9 @@
 
 .categoryTitle {
   text-align: left;
+  font-family: var(--main-font);
+  letter-spacing: 1px;
+  color: var(--lightblack);
 }
 
 .moviesContainer {
@@ -31,4 +34,6 @@
 
 .movieTitle {
   font-size: 20px;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
 }
