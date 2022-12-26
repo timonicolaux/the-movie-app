@@ -1,0 +1,47 @@
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { MovieDetails, Categories } from "../types/types";
+import styles from "../styles/Category.module.css";
+
+const Category: React.FC<Categories> = ({ category, title }) => {
+  const [movieList, setMovieList] = useState<MovieDetails[]>([]);
+  const getMovieList = async () => {
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+    );
+    console.log(res.data.results);
+    setMovieList(res.data.results);
+  };
+
+  useEffect(() => {
+    getMovieList();
+    console.log("coucou");
+  }, []);
+
+  return (
+    <div>
+      <div className={styles.categoryContainer}>
+        <div className={styles.categoryTitleContainer}>
+          <h1 className={styles.categoryTitle}>{title}</h1>
+        </div>
+        <div className={styles.moviesContainer}>
+          {movieList.map((elt, index) => (
+            <div key={index} className={styles.movieContainer}>
+              <div className={styles.moviePoster}>
+                <img
+                  src={`https://image.tmdb.org/t/p/original${elt.poster_path}`}
+                  width="210px"
+                  height="300px"
+                  alt="movie-poster"
+                />
+              </div>
+              <h1 className={styles.movieTitle}>{elt.title}</h1>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Category;

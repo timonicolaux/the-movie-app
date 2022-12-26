@@ -1,0 +1,9 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: blue;
+  height: 400px;
+}
