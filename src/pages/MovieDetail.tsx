@@ -27,6 +27,9 @@ const MovieDetail = () => {
     <div>
       {!isLoading && (
         <>
+          <div className={styles.header}>
+            <div className={styles.logo}></div>
+          </div>
           <div
             style={{
               position: "absolute",
