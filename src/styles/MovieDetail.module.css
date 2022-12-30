@@ -47,6 +47,7 @@
   top: 40px;
   margin-left: 40px;
   margin-right: 40px;
+  height: 550px;
 }
 
 .moviePosterContainer {
@@ -57,7 +58,8 @@
   flex-direction: column;
 }
 
-.movieTitleContainer {
+.movieTitleContainer,
+.movieTitleContainer2 {
   display: flex;
   flex-direction: row;
   margin-left: 20px;
@@ -95,12 +97,18 @@
   font-size: 20px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .movieContainer {
     flex-direction: column;
   }
+  .movieInfoContainer {
+    align-items: top;
+  }
   .movieTitleContainer {
     margin-top: 50px;
+  }
+  .movieTitleContainer2 {
+    margin-top: 0;
   }
   .movieTitle {
     font-size: 24px;
@@ -111,5 +119,8 @@
   }
   .logo {
     background-position: center;
+  }
+  .buttonContainer {
+    padding-bottom: 50px;
   }
 }

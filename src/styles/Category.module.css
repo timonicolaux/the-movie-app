@@ -5,9 +5,7 @@
 .categoryContainer {
   display: flex;
   flex-direction: column;
-  background-color: var(--lightgrey);
   margin-top: 50px;
-  border-radius: 10px;
 }
 
 .categoryTitleContainer {

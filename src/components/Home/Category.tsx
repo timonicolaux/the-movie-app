@@ -31,8 +31,8 @@ const Category: React.FC<Categories> = ({ category, title }) => {
                 <div className={styles.moviePoster}>
                   <img
                     src={`https://image.tmdb.org/t/p/original${elt.poster_path}`}
-                    width={window.innerWidth > 500 ? "210px" : "155px"}
-                    height={window.innerWidth > 500 ? "300px" : "220px"}
+                    width="155px"
+                    height="220px"
                     alt="movie-poster"
                     style={{ borderRadius: "10px" }}
                   />
