@@ -1,0 +1,52 @@
+.mainContainer {
+  width: 90%;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lightgrey);
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.categoryTitleContainer {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+.categoryTitle {
+  text-align: left;
+  font-family: var(--main-font);
+  letter-spacing: 1px;
+  color: var(--lightblack);
+  font-size: 24px;
+}
+
+.moviesContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-left: 30px;
+  margin-right: 50px;
+}
+
+.movieContainer {
+  width: 100%;
+  margin: 20px;
+}
+
+.moviePoster {
+}
+
+.movieTitle {
+  font-size: 20px;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+}
+
+@media screen and (max-width: 1100px) {
+}
