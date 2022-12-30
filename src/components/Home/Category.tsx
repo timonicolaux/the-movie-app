@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { MovieDetails, Categories } from "../types/types";
-import styles from "../styles/Category.module.css";
+import { MovieDetails, Categories } from "../../types/types";
+import styles from "../../styles/Category.module.css";
 import { Link } from "react-router-dom";
 
 const Category: React.FC<Categories> = ({ category, title }) => {
@@ -11,17 +11,15 @@ const Category: React.FC<Categories> = ({ category, title }) => {
     const res = await axios.get(
       `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
     );
-    console.log(res.data.results);
     setMovieList(res.data.results);
   };
 
   useEffect(() => {
     getMovieList();
-    console.log("coucou");
   }, []);
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div className={styles.categoryContainer}>
         <div className={styles.categoryTitleContainer}>
           <h1 className={styles.categoryTitle}>{title}</h1>
@@ -33,9 +31,10 @@ const Category: React.FC<Categories> = ({ category, title }) => {
                 <div className={styles.moviePoster}>
                   <img
                     src={`https://image.tmdb.org/t/p/original${elt.poster_path}`}
-                    width="210px"
-                    height="300px"
+                    width={window.innerWidth > 500 ? "210px" : "155px"}
+                    height={window.innerWidth > 500 ? "300px" : "220px"}
                     alt="movie-poster"
+                    style={{ borderRadius: "10px" }}
                   />
                 </div>
                 <h1 className={styles.movieTitle}>{elt.title}</h1>

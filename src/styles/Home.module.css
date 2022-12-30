@@ -1,6 +1,7 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
 }
 
 .header {
@@ -14,4 +15,24 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    height: 250px;
+  }
+  .logo {
+    height: 160px;
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import Category from "../components/Category";
-import SearchBar from "../components/SearchBar";
+import Category from "../components/Home/Category";
+import SearchBar from "../components/Home/SearchBar";
 import styles from "../styles/Home.module.css";
 import { Categories } from "../types/types";
 
@@ -18,12 +18,13 @@ const Home = () => {
           <div className={styles.logo}></div>
           <SearchBar />
         </div>
-
-        {categories?.map((elt, index) => (
-          <div key={index}>
-            <Category category={elt.category} title={elt.title} />
-          </div>
-        ))}
+        <div className={styles.categoriesContainer}>
+          {categories?.map((elt, index) => (
+            <div className={styles.categoryContainer} key={index}>
+              <Category category={elt.category} title={elt.title} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
