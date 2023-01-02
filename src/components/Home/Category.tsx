@@ -24,23 +24,28 @@ const Category: React.FC<Categories> = ({ category, title }) => {
         <div className={styles.categoryTitleContainer}>
           <h1 className={styles.categoryTitle}>{title}</h1>
         </div>
-        <div className={styles.moviesContainer}>
-          {movieList.map((elt, index) => (
-            <div key={index} className={styles.movieContainer}>
-              <Link style={{ textDecoration: "none" }} to={`/movie/${elt.id}`}>
-                <div className={styles.moviePoster}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${elt.poster_path}`}
-                    width="155px"
-                    height="220px"
-                    alt="movie-poster"
-                    style={{ borderRadius: "10px" }}
-                  />
-                </div>
-                <h1 className={styles.movieTitle}>{elt.title}</h1>
-              </Link>
-            </div>
-          ))}
+        <div className={styles.styleContainer}>
+          <div className={styles.moviesContainer}>
+            {movieList.map((elt, index) => (
+              <div key={index} className={styles.movieContainer}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/movie/${elt.id}`}
+                >
+                  <div className={styles.moviePoster}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${elt.poster_path}`}
+                      width="155px"
+                      height="220px"
+                      alt="movie-poster"
+                      style={{ borderRadius: "10px" }}
+                    />
+                  </div>
+                  <h1 className={styles.movieTitle}>{elt.title}</h1>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
