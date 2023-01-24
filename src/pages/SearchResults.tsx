@@ -33,6 +33,7 @@ const SearchResults = () => {
         <SearchBar />
       </div>
       <div className={styles.mainContainer}>
+        {!isLoading && search.length && <h2>Résultats pour "{search}"</h2>}
         {isLoading ? (
           <h1>Chargement...</h1>
         ) : searchData.length ? (
