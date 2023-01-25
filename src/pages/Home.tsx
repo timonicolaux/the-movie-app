@@ -18,6 +18,7 @@ const Home = () => {
           <div className={styles.logo}></div>
           <SearchBar />
         </div>
+
         <div className={styles.categoriesContainer}>
           {categories?.map((elt, index) => (
             <div className={styles.categoryContainer} key={index}>
