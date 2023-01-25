@@ -26,7 +26,7 @@ const SearchBar = () => {
             value={searchQuery}
             placeholder="Rechercher un film"
           ></input>
-          <input type="submit" className={styles.button} value="Rechercher" />
+          <input type="submit" className={styles.button} value="GO !" />
         </form>
       </div>
     </div>
