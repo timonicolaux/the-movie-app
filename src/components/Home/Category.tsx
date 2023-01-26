@@ -197,7 +197,6 @@ const Category: React.FC<Categories> = ({ category, title }) => {
                       width="155px"
                       height="220px"
                       alt="movie-poster"
-                      style={{ borderRadius: "10px" }}
                     />
                   </div>
                   <h1 className={styles.movieTitle}>{elt.title}</h1>

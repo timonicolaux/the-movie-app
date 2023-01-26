@@ -8,6 +8,7 @@
 .header {
   background-color: #38868e;
   height: 230px;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.3);
 }
 
 .logo {
@@ -18,6 +19,29 @@
   background-position: left;
 }
 
+.titleSearch {
+  color: var(--lightblack);
+  font-style: var(--secondary-font);
+  margin-bottom: 50px;
+}
+
+.noResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleNoResults {
+  font-size: 18px;
+  color: rgb(190, 62, 62);
+  margin-top: 50px;
+}
+
+.noResults img {
+  border-radius: 5px;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+}
+
 .movieContainer {
   display: flex;
   flex-direction: row;
@@ -26,6 +50,8 @@
   width: 60%;
   height: 180px;
   border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  cursor: pointer;
 }
 
 .moviePoster {
