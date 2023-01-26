@@ -15,11 +15,15 @@ const MovieDetail = () => {
 
   const getMovieInfo = async () => {
     setIsLoading(true);
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
-    );
-    setMovieInfo(res.data);
-    setIsLoading(false);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+      );
+      setMovieInfo(res.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

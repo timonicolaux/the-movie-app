@@ -11,15 +11,22 @@ const Category: React.FC<Categories> = ({ category, title }) => {
 
   const getMovieList = async () => {
     setIsLoading(true);
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
-    );
-    setMovieList(res.data.results);
-    setIsLoading(false);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+      );
+      setMovieList(res.data.results);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    getMovieList();
+    const loadingTimer = setTimeout(() => {
+      getMovieList();
+    }, 1000);
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   return (

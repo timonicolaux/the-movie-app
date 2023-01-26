@@ -13,11 +13,15 @@ const SearchResults = () => {
 
   const getSearchData = async () => {
     setIsLoading(true);
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=fr&query=${search}&page=1&include_adult=false`
-    );
-    setSearchData(res.data.results);
-    setIsLoading(false);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=fr&query=${search}&page=1&include_adult=false`
+      );
+      setSearchData(res.data.results);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
