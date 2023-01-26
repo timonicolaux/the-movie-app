@@ -73,8 +73,18 @@ scroll gradient in the top right */
   margin: 20px;
 }
 
+.moviePoster {
+}
+
+.moviePoster img {
+  border-radius: 10px;
+  background-color: transparent;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+}
+
 .movieTitle {
-  font-size: 18px;
+  font-size: 16px;
+  text-align: center;
   font-family: var(--secondary-font);
   color: var(--lightblack);
 }

@@ -42,17 +42,12 @@ const MovieDetail = () => {
           <div>
             <div
               style={{
-                position: "absolute",
                 backgroundImage: `url(
             https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path}
           )`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                width: "100%",
                 height: window.innerWidth < 900 ? "500px" : "650px",
-                opacity: 0.2,
               }}
+              className={styles.movieBackground}
             ></div>
 
             <div className={styles.movieContainer}>
