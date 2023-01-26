@@ -9,10 +9,14 @@ const SearchBar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&language=fr&query=${searchQuery}&page=1&include_adult=false`
-    );
-    navigate(`/search-results/?search=${searchQuery}`);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&language=fr&query=${searchQuery}&page=1&include_adult=false`
+      );
+      navigate(`/search-results/?search=${searchQuery}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
