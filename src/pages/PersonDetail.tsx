@@ -10,7 +10,6 @@ const PersonDetail = () => {
           <div className={styles.logo}></div>
         </Link>
       </div>
-      <h1>Ici</h1>
     </div>
   );
 };

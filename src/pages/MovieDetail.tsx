@@ -110,7 +110,7 @@ const MovieDetail = () => {
                   <h2 className={styles.subtitle}>Synopsis</h2>
                   <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                 </div>
-                {window.innerWidth < 900 && movieCredits?.length && (
+                {window.innerWidth < 900 && movieCredits?.length !== 0 && (
                   <div className={styles.actorsMainContainer}>
                     <h1>Têtes d'affiche</h1>
                     <div className={styles.actorsContainer}>
