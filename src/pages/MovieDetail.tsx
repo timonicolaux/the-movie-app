@@ -39,7 +39,12 @@ const MovieDetail = () => {
           </Link>
         </div>
         {!isLoading && movieInfo ? (
-          <div>
+          <div
+            style={{
+              backgroundColor: "white",
+              height: window.innerWidth < 900 ? "500px" : "650px",
+            }}
+          >
             <div
               style={{
                 backgroundImage: `url(

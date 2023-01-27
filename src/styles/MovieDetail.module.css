@@ -50,6 +50,8 @@
   background-position: center;
   width: 100%;
   opacity: 0.2;
+  background-color: white;
+  z-index: 10;
 }
 
 .movieTitle {
