@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { MovieDetails } from "../types/types";
+import { CreditsDetails, MovieDetails } from "../types/types";
 import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
+  const [movieCredits, setMovieCredits] = useState<CreditsDetails[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -20,6 +21,22 @@ const MovieDetail = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
       );
       setMovieInfo(res.data);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getMovieCredits = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+      );
+      setMovieCredits(res.data.cast);
+      console.log(res.data.cast);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -28,6 +45,7 @@ const MovieDetail = () => {
 
   useEffect(() => {
     getMovieInfo();
+    getMovieCredits();
   }, []);
 
   return (
@@ -58,7 +76,11 @@ const MovieDetail = () => {
             <div className={styles.movieContainer}>
               <div className={styles.moviePosterContainer}>
                 <img
-                  src={`https://image.tmdb.org/t/p/original${movieInfo?.poster_path}`}
+                  src={
+                    movieInfo?.poster_path
+                      ? `https://image.tmdb.org/t/p/original${movieInfo?.poster_path}`
+                      : `https://fxpanel.net/images/no-poster.jpg`
+                  }
                   width="300px"
                   height="420px"
                   alt="movie-poster"
@@ -88,7 +110,35 @@ const MovieDetail = () => {
                   <h2 className={styles.subtitle}>Synopsis</h2>
                   <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                 </div>
+                {window.innerWidth < 900 && movieCredits?.length && (
+                  <div className={styles.actorsMainContainer}>
+                    <h1>Têtes d'affiche</h1>
+                    <div className={styles.actorsContainer}>
+                      {movieCredits
+                        ?.map((elt, index) => (
+                          <div className={styles.actorContainer} key={index}>
+                            <img
+                              src={
+                                elt?.profile_path
+                                  ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
+                                  : `https://fxpanel.net/images/no-poster.jpg`
+                              }
+                              width="150px"
+                              height="220px"
+                              alt="movie-poster"
+                            />
+                            <div className={styles.actorInfo}>
+                              <h2>{elt.name}</h2>
+                              <h3>{elt.character}</h3>
+                            </div>
+                          </div>
+                        ))
+                        .slice(0, 10)}
+                    </div>
+                  </div>
+                )}
               </div>
+
               {window.innerWidth <= 900 && (
                 <div className={styles.buttonContainerMobile}>
                   <button
@@ -119,6 +169,29 @@ const MovieDetail = () => {
               opacity: 0.2,
             }}
           ></div>
+        )}
+        {window.innerWidth >= 900 && (
+          <div className={styles.actorsMainContainer}>
+            <h1>Têtes d'affiche</h1>
+            <div className={styles.actorsContainer}>
+              {movieCredits
+                .map((elt, index) => (
+                  <div className={styles.actorContainer} key={index}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${elt?.profile_path}`}
+                      width="150px"
+                      height="220px"
+                      alt="movie-poster"
+                    />
+                    <div className={styles.actorInfo}>
+                      <h2>{elt.name}</h2>
+                      <h3>{elt.character}</h3>
+                    </div>
+                  </div>
+                ))
+                .slice(0, 10)}
+            </div>
+          </div>
         )}
       </div>
 

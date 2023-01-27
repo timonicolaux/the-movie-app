@@ -1,0 +1,13 @@
+.header {
+  background-color: #38868e;
+  height: 180px;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.3);
+}
+
+.logo {
+  height: 150px;
+  background-image: url("../assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
