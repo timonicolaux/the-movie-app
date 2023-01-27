@@ -54,7 +54,6 @@ body {
   width: 100%;
   opacity: 0.2;
   background-color: white;
-  z-index: 10;
 }
 
 .movieTitle {
@@ -131,11 +130,12 @@ body {
 
 .actorsMainContainer {
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-  min-width: 350px;
+  min-width: 300px;
 }
 
 .actorsMainContainer h1 {
@@ -146,10 +146,6 @@ body {
   margin-top: 50px;
 }
 
-.actorsContainer::-webkit-scrollbar {
-  display: none;
-}
-
 .actorsContainer {
   display: flex;
   flex-direction: row;
@@ -157,7 +153,6 @@ body {
   overflow-y: hidden;
   padding-right: 32px;
   padding-left: 20px;
-  -ms-overflow-style: none;
   --scrollbar-width: 0px;
   --mask-right: 20px;
   --mask-image-content: linear-gradient(

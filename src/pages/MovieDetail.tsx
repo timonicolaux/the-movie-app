@@ -84,7 +84,7 @@ const MovieDetail = () => {
                   width="300px"
                   height="420px"
                   alt="movie-poster"
-                  style={{ borderRadius: "10px", zIndex: 10 }}
+                  style={{ borderRadius: "10px", zIndex: 20 }}
                 />
               </div>
               <div className={styles.movieInfoContainer}>
