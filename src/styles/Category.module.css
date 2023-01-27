@@ -1,5 +1,6 @@
 .mainContainer {
-  width: 90%;
+  width: 100%;
+  margin-top: -50px;
 }
 
 .categoryContainer {
@@ -30,6 +31,10 @@
   /* color: #38868e; */
 }
 
+.moviesContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .moviesContainer {
   display: flex;
   flex-direction: row;
@@ -37,6 +42,7 @@
   overflow-y: hidden;
   padding-right: 32px;
   padding-left: 20px;
+  -ms-overflow-style: none;
 
   /* scroll bar width, for use in mask calculations */
   --scrollbar-width: 0px;
@@ -73,9 +79,6 @@ scroll gradient in the top right */
   margin: 20px;
 }
 
-.moviePoster {
-}
-
 .moviePoster img {
   border-radius: 10px;
   background-color: transparent;
@@ -87,4 +90,11 @@ scroll gradient in the top right */
   text-align: center;
   font-family: var(--secondary-font);
   color: var(--lightblack);
+}
+
+@media screen and (max-width: 500px) {
+  .moviePoster img {
+    width: 140px;
+    height: 200px;
+  }
 }

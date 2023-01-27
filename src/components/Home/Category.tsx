@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { MovieDetails, Categories } from "../../types/types";
 import styles from "../../styles/Category.module.css";
 import { Link } from "react-router-dom";
-import ContentLoader from "react-content-loader";
+import CategoryLoaderDesktop from "../Loaders/CategoryLoaderDesktop";
+import CategoryLoaderMobile from "../Loaders/CategoryLoaderMobile";
 
 const Category: React.FC<Categories> = ({ category, title }) => {
   const [movieList, setMovieList] = useState<MovieDetails[]>([]);
@@ -37,151 +38,14 @@ const Category: React.FC<Categories> = ({ category, title }) => {
         </div>
 
         <div className={styles.moviesContainer}>
-          {isLoading && (
+          {isLoading && window.innerWidth > 500 && (
             <div className={styles.movieContainer}>
-              <ContentLoader
-                height={340}
-                width="110%"
-                backgroundColor="#d9d9d9"
-                animate={true}
-              >
-                <rect x="0" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="0"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="0"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="200" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="200"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="200"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="400" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="400"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="400"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="600" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="600"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="600"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="800" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="800"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="800"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="1000" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="1000"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="1000"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="1200" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="1200"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="1200"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect x="1400" width="160px" height="220px" rx="10" ry="10" />
-                <rect
-                  x="1400"
-                  y="240"
-                  width="160px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-                <rect
-                  x="1400"
-                  y="270"
-                  width="100px"
-                  height="20px"
-                  rx="10"
-                  ry="10"
-                />
-              </ContentLoader>
+              <CategoryLoaderDesktop />
+            </div>
+          )}
+          {isLoading && window.innerWidth <= 500 && (
+            <div className={styles.movieContainer}>
+              <CategoryLoaderMobile />
             </div>
           )}
           {!isLoading &&
