@@ -4,3 +4,11 @@
   --lightblack: rgb(53, 52, 52);
   --lightgrey: rgb(235, 235, 235);
 }
+
+body {
+  background-image: url("../assets/cubicbackground.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
