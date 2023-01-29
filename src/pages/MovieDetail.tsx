@@ -4,6 +4,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import { CreditsDetails, MovieDetails } from "../types/types";
 import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
@@ -51,11 +52,7 @@ const MovieDetail = () => {
   return (
     <>
       <div className={styles.mainContainer}>
-        <div className={styles.header}>
-          <Link style={{ textDecoration: "none" }} to={`/`}>
-            <div className={styles.logo}></div>
-          </Link>
-        </div>
+        <Header />
         {!isLoading && movieInfo ? (
           <div
             style={{
@@ -90,7 +87,7 @@ const MovieDetail = () => {
               <div className={styles.movieInfoContainer}>
                 <div className={styles.movieTitleContainer}>
                   <h1 className={styles.movieTitle}>{movieInfo?.title}</h1>
-                  <h1 className={styles.movieTitle}>
+                  <h1 className={styles.movieDate}>
                     ({movieInfo?.release_date.slice(0, 4)})
                   </h1>
                 </div>
@@ -116,7 +113,13 @@ const MovieDetail = () => {
                     <div className={styles.actorsContainer}>
                       {movieCredits
                         ?.map((elt, index) => (
-                          <div className={styles.actorContainer} key={index}>
+                          <div
+                            className={styles.actorContainer}
+                            key={index}
+                            onClick={() => {
+                              navigate(`/person/${elt.id}`);
+                            }}
+                          >
                             <img
                               src={
                                 elt?.profile_path
@@ -176,7 +179,13 @@ const MovieDetail = () => {
             <div className={styles.actorsContainer}>
               {movieCredits
                 .map((elt, index) => (
-                  <div className={styles.actorContainer} key={index}>
+                  <div
+                    className={styles.actorContainer}
+                    key={index}
+                    onClick={() => {
+                      navigate(`/person/${elt.id}`);
+                    }}
+                  >
                     <img
                       src={`https://image.tmdb.org/t/p/original${elt?.profile_path}`}
                       width="150px"

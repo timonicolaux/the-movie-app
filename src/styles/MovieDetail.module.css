@@ -6,20 +6,6 @@ body {
   width: 100%;
 }
 
-.header {
-  background-color: #38868e;
-  height: 180px;
-  box-shadow: 0 3px 15px rgb(0 0 0 / 0.3);
-}
-
-.logo {
-  height: 150px;
-  background-image: url("../assets/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .buttonContainerMobile {
   display: flex;
   justify-content: center;
@@ -48,52 +34,62 @@ body {
 .movieBackground {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
   position: absolute;
+  top: 400px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   opacity: 0.2;
-  background-color: white;
-}
-
-.movieTitle {
-  font-size: 32px;
-  font-weight: 900;
-  font-family: var(--secondary-font);
-  color: var(--lightblack);
-  margin-left: 5px;
 }
 
 .movieContainer {
   display: flex;
   position: relative;
   top: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: auto;
+  margin-right: auto;
   height: 550px;
+  max-width: 1000px;
+  min-width: 300px;
 }
 
 .moviePosterContainer img {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  margin-left: 25px;
 }
 
 .movieInfoContainer {
   display: flex;
   flex-direction: column;
+  margin-left: 50px;
+  margin-right: 10px;
 }
 
 .movieTitleContainer,
 .movieTitleContainer2 {
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  align-items: center;
+}
+.movieTitle {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
+  margin-right: 10px;
+}
+
+.movieDate {
+  font-size: 26px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  color: var(--lightblack);
 }
 
 .runtime {
   font-family: var(--secondary-font);
   color: var(--lightblack);
   font-size: 18px;
-  margin-left: 5px;
 }
 
 .genreContainer {
@@ -111,7 +107,6 @@ body {
 }
 
 .movieOverviewContainer {
-  margin-left: 25px;
   font-family: var(--secondary-font);
   color: var(--lightblack);
 }
@@ -126,6 +121,8 @@ body {
   text-align: justify;
   letter-spacing: 1px;
   padding-right: 15px;
+  max-height: 380px;
+  overflow-x: scroll;
 }
 
 .actorsMainContainer {
@@ -178,13 +175,13 @@ body {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  cursor: pointer;
 }
 
 .actorContainer img {
   margin-top: 0;
   padding-top: 0;
   border-radius: 10px 10px 0 0;
-  z-index: 10;
 }
 
 .actorInfo {
@@ -208,28 +205,45 @@ body {
   .movieContainer {
     flex-direction: column;
   }
+  .movieBackground {
+    top: 250px;
+  }
+  .moviePosterContainer img {
+    margin-left: 0;
+  }
+  .movieTitleContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   .movieInfoContainer {
     align-items: top;
+    margin-left: 5%;
   }
   .genreContainer {
     margin-left: 0;
   }
   .movieTitleContainer {
     margin-top: 50px;
+    justify-content: center;
+    margin-right: 20px;
   }
   .movieTitleContainer2 {
     margin-top: 0;
     flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
   }
   .movieTitle {
     font-size: 24px;
+    margin-right: 0;
+  }
+  .movieInfo {
+    max-height: fit-content;
   }
   .moviePosterContainer {
     display: flex;
     justify-content: center;
-  }
-  .logo {
-    background-position: center;
   }
   .buttonContainer {
     padding-bottom: 50px;
