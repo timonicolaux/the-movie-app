@@ -6,6 +6,11 @@ body {
   width: 100%;
 }
 
+.movieMainContainer {
+  background-color: black;
+  height: 700px;
+}
+
 .buttonContainerMobile {
   display: flex;
   justify-content: center;
@@ -39,7 +44,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 .movieContainer {
@@ -49,13 +54,22 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 550px;
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 300px;
 }
 
 .moviePosterContainer img {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
   margin-left: 25px;
+  margin-top: 25px;
+}
+
+.movieTitle,
+.movieDate,
+.runtime,
+.genre,
+.movieOverviewContainer {
+  color: var(--lightwhite);
 }
 
 .movieInfoContainer {
@@ -75,7 +89,6 @@ body {
   font-size: 32px;
   font-weight: 900;
   font-family: var(--secondary-font);
-  color: var(--lightblack);
   margin-right: 10px;
 }
 
@@ -83,12 +96,10 @@ body {
   font-size: 26px;
   font-weight: 900;
   font-family: var(--secondary-font);
-  color: var(--lightblack);
 }
 
 .runtime {
   font-family: var(--secondary-font);
-  color: var(--lightblack);
   font-size: 18px;
 }
 
@@ -101,20 +112,18 @@ body {
 
 .genre {
   font-family: var(--secondary-font);
-  color: var(--lightblack);
   font-size: 12px;
   margin-left: 5px;
 }
 
 .movieOverviewContainer {
   font-family: var(--secondary-font);
-  color: var(--lightblack);
 }
 
 .subtitle {
   font-family: var(--main-font);
-  color: var(--lightblack);
   font-size: 20px;
+  color: var(--lightwhite);
 }
 
 .movieInfo {
@@ -125,13 +134,19 @@ body {
   overflow-x: scroll;
 }
 
+.director {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--lightwhite);
+}
+
 .actorsMainContainer {
   display: flex;
   width: 100%;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 300px;
 }
 
@@ -205,16 +220,24 @@ body {
   .movieContainer {
     flex-direction: column;
   }
+  .movieMainContainer {
+    height: 500px;
+  }
   .movieBackground {
     top: 250px;
   }
   .moviePosterContainer img {
     margin-left: 0;
+    margin-top: 0;
   }
-  .movieTitleContainer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .movieTitle,
+  .movieDate,
+  .runtime,
+  .genre,
+  .subtitle,
+  .director,
+  .movieOverviewContainer {
+    color: var(--lightblack);
   }
   .movieInfoContainer {
     align-items: top;
@@ -224,6 +247,9 @@ body {
     margin-left: 0;
   }
   .movieTitleContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-top: 50px;
     justify-content: center;
     margin-right: 20px;

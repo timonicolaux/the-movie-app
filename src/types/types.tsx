@@ -33,7 +33,7 @@ export interface MovieDetails {
   vote_count: number;
 }
 
-export interface CreditsDetails {
+export interface CastDetails {
   adult: boolean;
   cast_id: number;
   character: string;
@@ -43,6 +43,20 @@ export interface CreditsDetails {
   known_for_department: string;
   name: string;
   order: number;
+  original_name: string;
+  popularity: number;
+  profile_path?: any;
+}
+
+export interface CrewDetails {
+  adult: boolean;
+  credit_id: number;
+  department: string;
+  gender: number;
+  id: number;
+  job: string;
+  known_for_department: string;
+  name: string;
   original_name: string;
   popularity: number;
   profile_path?: any;

@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { CreditsDetails, MovieDetails } from "../types/types";
+import { CastDetails, CrewDetails, MovieDetails } from "../types/types";
 import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
-  const [movieCredits, setMovieCredits] = useState<CreditsDetails[]>([]);
+  const [movieCast, setMovieCast] = useState<CastDetails[]>([]);
+  const [movieDirector, setMovieDirector] = useState<CrewDetails>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ const MovieDetail = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
       );
       setMovieInfo(res.data);
-
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -35,9 +35,8 @@ const MovieDetail = () => {
       const res = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
       );
-      setMovieCredits(res.data.cast);
-      console.log(res.data.cast);
-
+      setMovieCast(res.data.cast);
+      setMovieDirector(res.data.crew.filter((elt) => elt.job === "Director"));
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -54,18 +53,13 @@ const MovieDetail = () => {
       <div className={styles.mainContainer}>
         <Header />
         {!isLoading && movieInfo ? (
-          <div
-            style={{
-              backgroundColor: "white",
-              height: window.innerWidth < 900 ? "500px" : "650px",
-            }}
-          >
+          <div className={styles.movieMainContainer}>
             <div
               style={{
                 backgroundImage: `url(
             https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path}
           )`,
-                height: window.innerWidth < 900 ? "500px" : "650px",
+                height: window.innerWidth < 900 ? "500px" : "700px",
               }}
               className={styles.movieBackground}
             ></div>
@@ -107,11 +101,17 @@ const MovieDetail = () => {
                   <h2 className={styles.subtitle}>Synopsis</h2>
                   <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                 </div>
-                {window.innerWidth < 900 && movieCredits?.length !== 0 && (
+                <div>
+                  <h2 className={styles.subtitle}>Réalisateur</h2>
+                  {movieDirector && (
+                    <h2 className={styles.director}>{movieDirector[0].name}</h2>
+                  )}
+                </div>
+                {window.innerWidth < 900 && movieCast?.length !== 0 && (
                   <div className={styles.actorsMainContainer}>
                     <h1>Têtes d'affiche</h1>
                     <div className={styles.actorsContainer}>
-                      {movieCredits
+                      {movieCast
                         ?.map((elt, index) => (
                           <div
                             className={styles.actorContainer}
@@ -177,7 +177,7 @@ const MovieDetail = () => {
           <div className={styles.actorsMainContainer}>
             <h1>Têtes d'affiche</h1>
             <div className={styles.actorsContainer}>
-              {movieCredits
+              {movieCast
                 .map((elt, index) => (
                   <div
                     className={styles.actorContainer}
