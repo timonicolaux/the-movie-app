@@ -67,8 +67,6 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
         `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genreId}&sort_by=vote_count.desc&language=fr`
       );
       setGenreMovieList(res.data.results);
-      console.log(res.data.results);
-
       setIsLoading(false);
     } catch (error) {
       console.log(error);
