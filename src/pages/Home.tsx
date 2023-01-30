@@ -103,6 +103,7 @@ const Home = () => {
                 title={elt.title}
                 personId="none"
                 genreId="none"
+                similarId="none"
               />
             </div>
           ))}
@@ -113,6 +114,7 @@ const Home = () => {
                 title={elt.name}
                 personId="none"
                 genreId={elt.id}
+                similarId="none"
               />
             </div>
           ))}

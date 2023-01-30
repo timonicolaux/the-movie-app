@@ -28,12 +28,13 @@ body {
   background-color: var(--lightgrey);
   border: none;
   border-radius: 10px;
-  width: 100px;
-  height: 40px;
+  width: 120px;
+  height: 50px;
   margin-top: 50px;
   font-family: var(--secondary-font);
   font-size: 18px;
   cursor: pointer;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .movieBackground {
@@ -214,6 +215,10 @@ body {
   color: var(--lightblack);
   font-size: 14px;
   font-weight: 400;
+}
+
+.similarMovies {
+  margin-top: 250px;
 }
 
 @media screen and (max-width: 900px) {

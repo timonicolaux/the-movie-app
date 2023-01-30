@@ -6,6 +6,7 @@ import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import ContentLoader from "react-content-loader";
+import MovieCarousel from "../components/Home/MovieCarousel";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
@@ -93,89 +94,77 @@ const MovieDetail = () => {
                   style={{ borderRadius: "10px", zIndex: 20 }}
                 />
               </div>
-              <div className={styles.movieInfoContainer}>
-                <div className={styles.movieTitleContainer}>
-                  <h1 className={styles.movieTitle}>{movieInfo?.title}</h1>
-                  <h1 className={styles.movieDate}>
-                    ({movieInfo?.release_date.slice(0, 4)})
-                  </h1>
-                </div>
-                <div className={styles.movieTitleContainer2}>
-                  <h3 className={styles.runtime}>{movieInfo?.runtime} min</h3>
-                  <div className={styles.genreContainer}>
-                    {movieInfo?.genres.map((elt, index) => (
-                      <h3 key={index} className={styles.genre}>
-                        {movieInfo.genres.length - 1 === index
-                          ? `${elt.name}`
-                          : `${elt.name} -`}
-                      </h3>
-                    ))}
+              {window.innerWidth > 900 && (
+                <div className={styles.movieInfoContainer}>
+                  <div className={styles.movieTitleContainer}>
+                    <h1 className={styles.movieTitle}>{movieInfo?.title}</h1>
+                    <h1 className={styles.movieDate}>
+                      ({movieInfo?.release_date.slice(0, 4)})
+                    </h1>
                   </div>
-                </div>
-                <div className={styles.movieOverviewContainer}>
-                  <h2 className={styles.subtitle}>Synopsis</h2>
-                  <p className={styles.movieInfo}>{movieInfo?.overview}</p>
-                </div>
-                {movieDirector?.length && (
-                  <div>
-                    <h2 className={styles.subtitle}>Réalisateur</h2>
-                    <h2 className={styles.director}>{movieDirector[0].name}</h2>
-                  </div>
-                )}
-                {window.innerWidth < 900 && movieCast?.length !== 0 && (
-                  <div className={styles.actorsMainContainer}>
-                    <h1>Têtes d'affiche</h1>
-                    <div className={styles.actorsContainer}>
-                      {movieCast
-                        ?.map((elt, index) => (
-                          <div
-                            className={styles.actorContainer}
-                            key={index}
-                            onClick={() => {
-                              navigate(`/person/${elt.id}`);
-                            }}
-                          >
-                            <img
-                              src={
-                                elt?.profile_path
-                                  ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
-                                  : `https://fxpanel.net/images/no-poster.jpg`
-                              }
-                              width="150px"
-                              height="220px"
-                              alt="movie-poster"
-                            />
-                            <div className={styles.actorInfo}>
-                              <h2>{elt.name}</h2>
-                              <h3>{elt.character}</h3>
-                            </div>
-                          </div>
-                        ))
-                        .slice(0, 10)}
+                  <div className={styles.movieTitleContainer2}>
+                    <h3 className={styles.runtime}>{movieInfo?.runtime} min</h3>
+                    <div className={styles.genreContainer}>
+                      {movieInfo?.genres.map((elt, index) => (
+                        <h3 key={index} className={styles.genre}>
+                          {movieInfo.genres.length - 1 === index
+                            ? `${elt.name}`
+                            : `${elt.name} -`}
+                        </h3>
+                      ))}
                     </div>
                   </div>
-                )}
-                {window.innerWidth <= 900 && (
-                  <div className={styles.buttonContainerMobile}>
-                    <button
-                      className={styles.button}
-                      onClick={() => {
-                        if (!search) {
-                          navigate(`/`);
-                        } else {
-                          navigate(`/search-results/?search=${search}`);
-                        }
-                      }}
-                    >
-                      Retour
-                    </button>
+                  <div className={styles.movieOverviewContainer}>
+                    <h2 className={styles.subtitle}>Synopsis</h2>
+                    <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                   </div>
-                )}
-              </div>
+                  {movieDirector?.length && (
+                    <div>
+                      <h2 className={styles.subtitle}>Réalisateur</h2>
+                      <h2 className={styles.director}>
+                        {movieDirector[0].name}
+                      </h2>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
-          {window.innerWidth >= 900 && movieCast?.length !== 0 && (
+          {window.innerWidth <= 900 && (
+            <div className={styles.movieInfoContainer}>
+              <div className={styles.movieTitleContainer}>
+                <h1 className={styles.movieTitle}>{movieInfo?.title}</h1>
+                <h1 className={styles.movieDate}>
+                  ({movieInfo?.release_date.slice(0, 4)})
+                </h1>
+              </div>
+              <div className={styles.movieTitleContainer2}>
+                <h3 className={styles.runtime}>{movieInfo?.runtime} min</h3>
+                <div className={styles.genreContainer}>
+                  {movieInfo?.genres.map((elt, index) => (
+                    <h3 key={index} className={styles.genre}>
+                      {movieInfo.genres.length - 1 === index
+                        ? `${elt.name}`
+                        : `${elt.name} -`}
+                    </h3>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.movieOverviewContainer}>
+                <h2 className={styles.subtitle}>Synopsis</h2>
+                <p className={styles.movieInfo}>{movieInfo?.overview}</p>
+              </div>
+              {movieDirector?.length && (
+                <div>
+                  <h2 className={styles.subtitle}>Réalisateur</h2>
+                  <h2 className={styles.director}>{movieDirector[0].name}</h2>
+                </div>
+              )}
+            </div>
+          )}
+
+          {movieCast?.length !== 0 && (
             <div className={styles.actorsMainContainer}>
               <h1>Têtes d'affiche</h1>
               <div className={styles.actorsContainer}>
@@ -208,22 +197,30 @@ const MovieDetail = () => {
               </div>
             </div>
           )}
-          {window.innerWidth >= 900 && (
-            <div className={styles.buttonContainerDesktop}>
-              <button
-                className={styles.button}
-                onClick={() => {
-                  if (!search) {
-                    navigate(`/`);
-                  } else {
-                    navigate(`/search-results/?search=${search}`);
-                  }
-                }}
-              >
-                Retour
-              </button>
-            </div>
-          )}
+
+          <div className={styles.buttonContainerDesktop}>
+            <button
+              className={styles.button}
+              onClick={() => {
+                if (!search) {
+                  navigate(`/`);
+                } else {
+                  navigate(`/search-results/?search=${search}`);
+                }
+              }}
+            >
+              Retour
+            </button>
+          </div>
+          <div className={styles.similarMovies}>
+            <MovieCarousel
+              category="none"
+              title="Vous pourriez aussi aimer"
+              personId="none"
+              genreId="none"
+              similarId={id}
+            />
+          </div>
         </div>
       )}
     </>
