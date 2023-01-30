@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const CategoryLoaderMobile = () => {
+const MovieCarouselLoaderMobile = () => {
   return (
     <>
       <ContentLoader
@@ -24,4 +24,4 @@ const CategoryLoaderMobile = () => {
   );
 };
 
-export default CategoryLoaderMobile;
+export default MovieCarouselLoaderMobile;

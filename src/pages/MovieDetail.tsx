@@ -5,6 +5,7 @@ import { CastDetails, CrewDetails, MovieDetails } from "../types/types";
 import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import ContentLoader from "react-content-loader";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
@@ -50,9 +51,23 @@ const MovieDetail = () => {
 
   return (
     <>
-      <div className={styles.mainContainer}>
-        <Header />
-        {!isLoading ? (
+      {isLoading && (
+        <>
+          <Header />
+          <ContentLoader
+            height="100vh"
+            width="100vh"
+            backgroundColor="#d9d9d9"
+            animate={true}
+          >
+            <rect x="0" width="100%" height="100vh" />
+          </ContentLoader>
+        </>
+      )}
+
+      {!isLoading && (
+        <div className={styles.mainContainer}>
+          <Header />
           <div className={styles.movieMainContainer}>
             <div
               style={{
@@ -140,88 +155,75 @@ const MovieDetail = () => {
                     </div>
                   </div>
                 )}
-              </div>
-
-              {window.innerWidth <= 900 && (
-                <div className={styles.buttonContainerMobile}>
-                  <button
-                    className={styles.button}
-                    onClick={() => {
-                      if (!search) {
-                        navigate(`/`);
-                      } else {
-                        navigate(`/search-results/?search=${search}`);
-                      }
-                    }}
-                  >
-                    Retour
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div
-            style={{
-              backgroundColor: "grey",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              width: "100%",
-              height: window.innerWidth < 900 ? "500px" : "650px",
-              opacity: 0.2,
-            }}
-          ></div>
-        )}
-        {window.innerWidth >= 900 && movieCast?.length !== 0 && (
-          <div className={styles.actorsMainContainer}>
-            <h1>Têtes d'affiche</h1>
-            <div className={styles.actorsContainer}>
-              {movieCast
-                .map((elt, index) => (
-                  <div
-                    className={styles.actorContainer}
-                    key={index}
-                    onClick={() => {
-                      navigate(`/person/${elt.id}`);
-                    }}
-                  >
-                    <img
-                      src={
-                        elt?.profile_path
-                          ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
-                          : `https://fxpanel.net/images/no-poster.jpg`
-                      }
-                      width="150px"
-                      height="220px"
-                      alt="movie-poster"
-                    />
-                    <div className={styles.actorInfo}>
-                      <h2>{elt.name}</h2>
-                      <h3>{elt.character}</h3>
-                    </div>
+                {window.innerWidth <= 900 && (
+                  <div className={styles.buttonContainerMobile}>
+                    <button
+                      className={styles.button}
+                      onClick={() => {
+                        if (!search) {
+                          navigate(`/`);
+                        } else {
+                          navigate(`/search-results/?search=${search}`);
+                        }
+                      }}
+                    >
+                      Retour
+                    </button>
                   </div>
-                ))
-                .slice(0, 10)}
+                )}
+              </div>
             </div>
           </div>
-        )}
-      </div>
 
-      {window.innerWidth > 900 && (
-        <div className={styles.buttonContainerDesktop}>
-          <button
-            className={styles.button}
-            onClick={() => {
-              if (!search) {
-                navigate(`/`);
-              } else {
-                navigate(`/search-results/?search=${search}`);
-              }
-            }}
-          >
-            Retour
-          </button>
+          {window.innerWidth >= 900 && movieCast?.length !== 0 && (
+            <div className={styles.actorsMainContainer}>
+              <h1>Têtes d'affiche</h1>
+              <div className={styles.actorsContainer}>
+                {movieCast
+                  .map((elt, index) => (
+                    <div
+                      className={styles.actorContainer}
+                      key={index}
+                      onClick={() => {
+                        navigate(`/person/${elt.id}`);
+                      }}
+                    >
+                      <img
+                        src={
+                          elt?.profile_path
+                            ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
+                            : `https://fxpanel.net/images/no-poster.jpg`
+                        }
+                        width="150px"
+                        height="220px"
+                        alt="movie-poster"
+                      />
+                      <div className={styles.actorInfo}>
+                        <h2>{elt.name}</h2>
+                        <h3>{elt.character}</h3>
+                      </div>
+                    </div>
+                  ))
+                  .slice(0, 10)}
+              </div>
+            </div>
+          )}
+          {window.innerWidth >= 900 && (
+            <div className={styles.buttonContainerDesktop}>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  if (!search) {
+                    navigate(`/`);
+                  } else {
+                    navigate(`/search-results/?search=${search}`);
+                  }
+                }}
+              >
+                Retour
+              </button>
+            </div>
+          )}
         </div>
       )}
     </>

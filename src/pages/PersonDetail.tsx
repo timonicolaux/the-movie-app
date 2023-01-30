@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
-import Category from "../components/Home/Category";
+import MovieCarousel from "../components/Home/MovieCarousel";
 import styles from "../styles/PersonDetail.module.css";
 import { PersonInfo } from "../types/types";
 
@@ -49,7 +49,12 @@ const PersonDetail = () => {
           </div>
         </div>
       </div>
-      <Category category="none" title="Célèbre pour" personId={id} />
+      <MovieCarousel
+        category="none"
+        title="Célèbre pour"
+        personId={id}
+        genreId="none"
+      />
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => navigate(-1)}>
           Retour

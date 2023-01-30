@@ -3,7 +3,18 @@
 export interface Categories {
   category: string;
   title: string;
+}
+
+export interface Genres {
+  id: string;
+  name: string;
+}
+
+export interface MovieCarouselType {
+  category: string;
+  title: string;
   personId: string;
+  genreId: string;
 }
 
 export interface MovieDetails {

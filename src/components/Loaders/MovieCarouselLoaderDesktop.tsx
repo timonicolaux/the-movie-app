@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const CategoryLoaderDesktop = () => {
+const MovieCarouselLoaderDesktop = () => {
   return (
     <>
       <ContentLoader
@@ -39,4 +39,4 @@ const CategoryLoaderDesktop = () => {
   );
 };
 
-export default CategoryLoaderDesktop;
+export default MovieCarouselLoaderDesktop;

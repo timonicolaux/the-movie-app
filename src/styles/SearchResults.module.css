@@ -9,6 +9,7 @@
   color: var(--lightblack);
   font-style: var(--secondary-font);
   margin-bottom: 50px;
+  font-style: italic;
 }
 
 .noResults {
