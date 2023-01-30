@@ -54,6 +54,7 @@ const PersonDetail = () => {
         title="Célèbre pour"
         personId={id}
         genreId="none"
+        similarId="none"
       />
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => navigate(-1)}>

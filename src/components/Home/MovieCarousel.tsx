@@ -15,6 +15,7 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
   title,
   personId,
   genreId,
+  similarId,
 }) => {
   const [categoryMovieList, setCategoryMovieList] = useState<MovieDetails[]>(
     []
@@ -26,6 +27,7 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
     PersonMovieDetails[]
   >([]);
   const [genreMovieList, setGenreMovieList] = useState<MovieDetails[]>([]);
+  const [similarMovies, setSimilarMovies] = useState<MovieDetails[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getCategoryMovieList = async () => {
@@ -73,6 +75,19 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
     }
   };
 
+  const getSimilarMovies = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${similarId}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+      );
+      setSimilarMovies(res.data.results);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       if (category !== "none") {
@@ -83,6 +98,9 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
       }
       if (genreId !== "none") {
         getGenreMovieList();
+      }
+      if (similarId !== "none") {
+        getSimilarMovies();
       }
     }, 1000);
     return () => clearTimeout(loadingTimer);
@@ -159,6 +177,32 @@ const MovieCarousel: React.FC<MovieCarouselType> = ({
           {!isLoading &&
             genreId !== "none" &&
             genreMovieList
+              ?.map((elt, index) => (
+                <div key={index} className={styles.movieContainer}>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/movie/${elt.id}`}
+                  >
+                    <div className={styles.moviePoster}>
+                      <img
+                        src={
+                          elt?.poster_path
+                            ? `https://image.tmdb.org/t/p/original${elt.poster_path}`
+                            : `https://fxpanel.net/images/no-poster.jpg`
+                        }
+                        width="155px"
+                        height="220px"
+                        alt="movie-poster"
+                      />
+                    </div>
+                    <h1 className={styles.movieTitle}>{elt.title}</h1>
+                  </Link>
+                </div>
+              ))
+              .slice(0, 10)}
+          {!isLoading &&
+            similarId !== "none" &&
+            similarMovies
               ?.map((elt, index) => (
                 <div key={index} className={styles.movieContainer}>
                   <Link

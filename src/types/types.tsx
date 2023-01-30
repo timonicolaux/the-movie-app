@@ -15,6 +15,7 @@ export interface MovieCarouselType {
   title: string;
   personId: string;
   genreId: string;
+  similarId: string;
 }
 
 export interface MovieDetails {
