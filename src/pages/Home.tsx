@@ -1,8 +1,8 @@
 import React from "react";
 import Category from "../components/Home/Category";
-import SearchBar from "../components/Home/SearchBar";
 import styles from "../styles/Home.module.css";
 import { Categories } from "../types/types";
+import Header from "../components/Header";
 
 const Home = () => {
   const categories: Categories[] = [
@@ -14,15 +14,16 @@ const Home = () => {
   return (
     <>
       <div className={styles.mainContainer}>
-        <div className={styles.header}>
-          <div className={styles.logo}></div>
-          <SearchBar />
-        </div>
+        <Header />
 
         <div className={styles.categoriesContainer}>
           {categories?.map((elt, index) => (
             <div className={styles.categoryContainer} key={index}>
-              <Category category={elt.category} title={elt.title} />
+              <Category
+                category={elt.category}
+                title={elt.title}
+                personId="none"
+              />
             </div>
           ))}
         </div>

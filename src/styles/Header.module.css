@@ -1,0 +1,25 @@
+.header {
+  background-color: #38868e;
+  height: 400px;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.3);
+  position: relative;
+  z-index: 20;
+}
+
+.logo {
+  height: 250px;
+  background-image: url("../assets/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    height: 250px;
+  }
+  .logo {
+    height: 160px;
+  }
+}

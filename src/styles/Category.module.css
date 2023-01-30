@@ -9,7 +9,7 @@
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 350px;
 }
 
@@ -31,10 +31,6 @@
   /* color: #38868e; */
 }
 
-.moviesContainer::-webkit-scrollbar {
-  display: none;
-}
-
 .moviesContainer {
   display: flex;
   flex-direction: row;
@@ -42,7 +38,6 @@
   overflow-y: hidden;
   padding-right: 32px;
   padding-left: 20px;
-  -ms-overflow-style: none;
 
   /* scroll bar width, for use in mask calculations */
   --scrollbar-width: 0px;
@@ -77,6 +72,7 @@ scroll gradient in the top right */
 .movieContainer {
   width: 100%;
   margin: 20px;
+  text-align: center;
 }
 
 .moviePoster img {

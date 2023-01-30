@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { MovieDetails } from "../types/types";
+import { CastDetails, CrewDetails, MovieDetails } from "../types/types";
 import styles from "../styles/MovieDetail.module.css";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
+  const [movieCast, setMovieCast] = useState<CastDetails[]>([]);
+  const [movieDirector, setMovieDirector] = useState<CrewDetails[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,31 +29,37 @@ const MovieDetail = () => {
     }
   };
 
+  const getMovieCredits = async () => {
+    setIsLoading(true);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
+      );
+      setMovieCast(res.data.cast);
+      setMovieDirector(res.data.crew.filter((elt) => elt.job === "Director"));
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getMovieInfo();
+    getMovieCredits();
   }, []);
 
   return (
     <>
       <div className={styles.mainContainer}>
-        <div className={styles.header}>
-          <Link style={{ textDecoration: "none" }} to={`/`}>
-            <div className={styles.logo}></div>
-          </Link>
-        </div>
-        {!isLoading && movieInfo ? (
-          <div
-            style={{
-              backgroundColor: "white",
-              height: window.innerWidth < 900 ? "500px" : "650px",
-            }}
-          >
+        <Header />
+        {!isLoading ? (
+          <div className={styles.movieMainContainer}>
             <div
               style={{
                 backgroundImage: `url(
             https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path}
           )`,
-                height: window.innerWidth < 900 ? "500px" : "650px",
+                height: window.innerWidth < 900 ? "500px" : "700px",
               }}
               className={styles.movieBackground}
             ></div>
@@ -58,17 +67,21 @@ const MovieDetail = () => {
             <div className={styles.movieContainer}>
               <div className={styles.moviePosterContainer}>
                 <img
-                  src={`https://image.tmdb.org/t/p/original${movieInfo?.poster_path}`}
+                  src={
+                    movieInfo?.poster_path
+                      ? `https://image.tmdb.org/t/p/original${movieInfo?.poster_path}`
+                      : `https://fxpanel.net/images/no-poster.jpg`
+                  }
                   width="300px"
                   height="420px"
                   alt="movie-poster"
-                  style={{ borderRadius: "10px", zIndex: 10 }}
+                  style={{ borderRadius: "10px", zIndex: 20 }}
                 />
               </div>
               <div className={styles.movieInfoContainer}>
                 <div className={styles.movieTitleContainer}>
                   <h1 className={styles.movieTitle}>{movieInfo?.title}</h1>
-                  <h1 className={styles.movieTitle}>
+                  <h1 className={styles.movieDate}>
                     ({movieInfo?.release_date.slice(0, 4)})
                   </h1>
                 </div>
@@ -88,7 +101,47 @@ const MovieDetail = () => {
                   <h2 className={styles.subtitle}>Synopsis</h2>
                   <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                 </div>
+                {movieDirector?.length && (
+                  <div>
+                    <h2 className={styles.subtitle}>Réalisateur</h2>
+                    <h2 className={styles.director}>{movieDirector[0].name}</h2>
+                  </div>
+                )}
+                {window.innerWidth < 900 && movieCast?.length !== 0 && (
+                  <div className={styles.actorsMainContainer}>
+                    <h1>Têtes d'affiche</h1>
+                    <div className={styles.actorsContainer}>
+                      {movieCast
+                        ?.map((elt, index) => (
+                          <div
+                            className={styles.actorContainer}
+                            key={index}
+                            onClick={() => {
+                              navigate(`/person/${elt.id}`);
+                            }}
+                          >
+                            <img
+                              src={
+                                elt?.profile_path
+                                  ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
+                                  : `https://fxpanel.net/images/no-poster.jpg`
+                              }
+                              width="150px"
+                              height="220px"
+                              alt="movie-poster"
+                            />
+                            <div className={styles.actorInfo}>
+                              <h2>{elt.name}</h2>
+                              <h3>{elt.character}</h3>
+                            </div>
+                          </div>
+                        ))
+                        .slice(0, 10)}
+                    </div>
+                  </div>
+                )}
               </div>
+
               {window.innerWidth <= 900 && (
                 <div className={styles.buttonContainerMobile}>
                   <button
@@ -119,6 +172,39 @@ const MovieDetail = () => {
               opacity: 0.2,
             }}
           ></div>
+        )}
+        {window.innerWidth >= 900 && movieCast?.length !== 0 && (
+          <div className={styles.actorsMainContainer}>
+            <h1>Têtes d'affiche</h1>
+            <div className={styles.actorsContainer}>
+              {movieCast
+                .map((elt, index) => (
+                  <div
+                    className={styles.actorContainer}
+                    key={index}
+                    onClick={() => {
+                      navigate(`/person/${elt.id}`);
+                    }}
+                  >
+                    <img
+                      src={
+                        elt?.profile_path
+                          ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
+                          : `https://fxpanel.net/images/no-poster.jpg`
+                      }
+                      width="150px"
+                      height="220px"
+                      alt="movie-poster"
+                    />
+                    <div className={styles.actorInfo}>
+                      <h2>{elt.name}</h2>
+                      <h3>{elt.character}</h3>
+                    </div>
+                  </div>
+                ))
+                .slice(0, 10)}
+            </div>
+          </div>
         )}
       </div>
 

@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { MovieDetails } from "../types/types";
 import styles from "../styles/SearchResults.module.css";
 import SearchBar from "../components/Home/SearchBar";
+import Header from "../components/Header";
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -31,12 +32,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className={styles.header}>
-        <Link style={{ textDecoration: "none" }} to={`/`}>
-          <div className={styles.logo}></div>
-        </Link>
-        <SearchBar />
-      </div>
+      <Header />
       <div className={styles.mainContainer}>
         {!isLoading && search.length && (
           <h2 className={styles.titleSearch}>Résultats pour "{search}"</h2>
