@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Category from "../components/Home/Category";
 import styles from "../styles/PersonDetail.module.css";
 import { PersonInfo } from "../types/types";
 
@@ -15,7 +16,6 @@ const PersonDetail = () => {
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr`
       );
       setPersonInfo(res.data);
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -49,6 +49,7 @@ const PersonDetail = () => {
           </div>
         </div>
       </div>
+      <Category category="none" title="Célèbre pour" personId={id} />
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={() => navigate(-1)}>
           Retour

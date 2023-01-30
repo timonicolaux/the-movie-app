@@ -21,11 +21,20 @@
   margin-right: 10px;
 }
 
+.personInfoContainer h1 {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  color: var(--lighblack);
+  margin-right: 10px;
+}
+
 .personInfoContainer p {
   text-align: justify;
   letter-spacing: 1px;
   padding-right: 15px;
-  overflow-x: scroll;
+  color: var(--lighblack);
+  font-family: var(--secondary-font);
 }
 
 .buttonContainer {
@@ -53,6 +62,10 @@
 
   .personInfoContainer {
     margin-left: 5%;
+  }
+
+  .personInfoContainer h1 {
+    text-align: center;
   }
 
   .personImageContainer {

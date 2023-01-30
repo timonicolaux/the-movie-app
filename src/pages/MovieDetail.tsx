@@ -9,7 +9,7 @@ import Header from "../components/Header";
 const MovieDetail = () => {
   const [movieInfo, setMovieInfo] = useState<MovieDetails>();
   const [movieCast, setMovieCast] = useState<CastDetails[]>([]);
-  const [movieDirector, setMovieDirector] = useState<CrewDetails>();
+  const [movieDirector, setMovieDirector] = useState<CrewDetails[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const MovieDetail = () => {
     <>
       <div className={styles.mainContainer}>
         <Header />
-        {!isLoading && movieInfo ? (
+        {!isLoading ? (
           <div className={styles.movieMainContainer}>
             <div
               style={{
@@ -101,12 +101,12 @@ const MovieDetail = () => {
                   <h2 className={styles.subtitle}>Synopsis</h2>
                   <p className={styles.movieInfo}>{movieInfo?.overview}</p>
                 </div>
-                <div>
-                  <h2 className={styles.subtitle}>Réalisateur</h2>
-                  {movieDirector && (
+                {movieDirector?.length && (
+                  <div>
+                    <h2 className={styles.subtitle}>Réalisateur</h2>
                     <h2 className={styles.director}>{movieDirector[0].name}</h2>
-                  )}
-                </div>
+                  </div>
+                )}
                 {window.innerWidth < 900 && movieCast?.length !== 0 && (
                   <div className={styles.actorsMainContainer}>
                     <h1>Têtes d'affiche</h1>
@@ -173,7 +173,7 @@ const MovieDetail = () => {
             }}
           ></div>
         )}
-        {window.innerWidth >= 900 && (
+        {window.innerWidth >= 900 && movieCast?.length !== 0 && (
           <div className={styles.actorsMainContainer}>
             <h1>Têtes d'affiche</h1>
             <div className={styles.actorsContainer}>
@@ -187,7 +187,11 @@ const MovieDetail = () => {
                     }}
                   >
                     <img
-                      src={`https://image.tmdb.org/t/p/original${elt?.profile_path}`}
+                      src={
+                        elt?.profile_path
+                          ? `https://image.tmdb.org/t/p/original${elt?.profile_path}`
+                          : `https://fxpanel.net/images/no-poster.jpg`
+                      }
                       width="150px"
                       height="220px"
                       alt="movie-poster"

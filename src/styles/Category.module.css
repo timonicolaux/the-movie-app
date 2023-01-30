@@ -72,6 +72,7 @@ scroll gradient in the top right */
 .movieContainer {
   width: 100%;
   margin: 20px;
+  text-align: center;
 }
 
 .moviePoster img {

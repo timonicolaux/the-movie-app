@@ -3,6 +3,7 @@
   height: 400px;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.3);
   position: relative;
+  z-index: 20;
 }
 
 .logo {
@@ -14,7 +15,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .header {
     height: 250px;
   }

@@ -3,6 +3,7 @@
 export interface Categories {
   category: string;
   title: string;
+  personId: string;
 }
 
 export interface MovieDetails {
@@ -27,6 +28,26 @@ export interface MovieDetails {
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface PersonMovieDetails {
+  adult: boolean;
+  backdrop_path: string;
+  character: string;
+  credit_id: string;
+  genre_ids: number[];
+  id: number;
+  order: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path?: any;
+  release_date: string;
   title: string;
   video: boolean;
   vote_average: number;

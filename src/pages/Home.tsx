@@ -19,7 +19,11 @@ const Home = () => {
         <div className={styles.categoriesContainer}>
           {categories?.map((elt, index) => (
             <div className={styles.categoryContainer} key={index}>
-              <Category category={elt.category} title={elt.title} />
+              <Category
+                category={elt.category}
+                title={elt.title}
+                personId="none"
+              />
             </div>
           ))}
         </div>
