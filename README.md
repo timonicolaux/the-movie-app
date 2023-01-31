@@ -1,3 +1,5 @@
+This is a little Front-end training in Typescript, a movie website where you can search and look for movie and actor information.
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
