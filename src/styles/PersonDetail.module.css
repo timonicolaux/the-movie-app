@@ -1,0 +1,79 @@
+.personMainContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  min-width: 300px;
+}
+
+.personImageContainer img {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.personInfoContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+.personInfoContainer h1 {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  color: var(--lighblack);
+  margin-right: 10px;
+}
+
+.personInfoContainer p {
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 15px;
+  color: var(--lighblack);
+  font-family: var(--secondary-font);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.button {
+  background-color: var(--lightgrey);
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  margin-top: 50px;
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+@media screen and (max-width: 900px) {
+  .personMainContainer {
+    flex-direction: column;
+  }
+
+  .personInfoContainer {
+    margin-left: 5%;
+  }
+
+  .personInfoContainer h1 {
+    text-align: center;
+  }
+
+  .personImageContainer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .personImageContainer img {
+    margin-left: 0;
+  }
+}

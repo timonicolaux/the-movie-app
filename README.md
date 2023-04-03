@@ -1,48 +1,18 @@
-This is a little Front-end training in Typescript, a movie website where you can search and look for movie and actor information.
+## Description
 
-# Getting Started with Create React App
+The Movie App est une petite application de cinéma, qui permet de rechercher et de visualiser les informations d'un film.
+C'est un exercice front-end qui a pour objectif de s'entrainer à afficher de données JSON reçues via une API déjà existante et gratuite.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Visualisation du rendu
 
-## Available Scripts
+Voici le lien du déploiement : https://the-movie-app-kohl.vercel.app/
 
-In the project directory, you can run:
+Voici les instructions pour lancer l'application en local :
 
-### `npm start`
+Il vous faudra en premier lieu créer un compte développeur sur https://www.themoviedb.org/ pour obtenir un accès à l'API. Une fois votre clé d'accès obtenue, il faudra lui donner la valeur de REACT_APP_API_KEY dans votre fichier .env
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- git clone https://github.com/timonicolaux/the-movie-app.git
+- git checkout dev
+- git pull origin
+- npm i
+- npm start

@@ -1,0 +1,282 @@
+body {
+  min-height: 100vh;
+}
+.mainContainer {
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.movieMainContainer {
+  background-color: black;
+  height: 700px;
+}
+
+.buttonContainerMobile {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.buttonContainerDesktop {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.button {
+  background-color: var(--lightgrey);
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  margin-top: 50px;
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.movieBackground {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  position: absolute;
+  top: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  opacity: 0.3;
+}
+
+.movieContainer {
+  display: flex;
+  position: relative;
+  top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 550px;
+  max-width: 1200px;
+  min-width: 300px;
+}
+
+.moviePosterContainer img {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.movieTitle,
+.movieDate,
+.runtime,
+.genre,
+.movieOverviewContainer {
+  color: var(--lightwhite);
+}
+
+.movieInfoContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+.movieTitleContainer,
+.movieTitleContainer2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.movieTitle {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+  margin-right: 10px;
+}
+
+.movieDate {
+  font-size: 26px;
+  font-weight: 900;
+  font-family: var(--secondary-font);
+}
+
+.runtime {
+  font-family: var(--secondary-font);
+  font-size: 18px;
+}
+
+.genreContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  flex-wrap: wrap;
+}
+
+.genre {
+  font-family: var(--secondary-font);
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.movieOverviewContainer {
+  font-family: var(--secondary-font);
+}
+
+.subtitle {
+  font-family: var(--main-font);
+  font-size: 20px;
+  color: var(--lightwhite);
+}
+
+.movieInfo {
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 15px;
+  max-height: 380px;
+}
+
+.director {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--lightwhite);
+}
+
+.actorsMainContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  min-width: 300px;
+}
+
+.actorsMainContainer h1 {
+  font-family: var(--main-font);
+  color: var(--lightblack);
+  font-size: 20px;
+  margin-left: 25px;
+  margin-top: 50px;
+}
+
+.actorsContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-right: 32px;
+  padding-left: 15px;
+  --scrollbar-width: 0px;
+  --mask-right: 20px;
+  --mask-image-content: linear-gradient(
+    to right,
+    transparent,
+    black var(--mask-right),
+    black calc(100% - var(--mask-right)),
+    transparent
+  );
+  --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+  --mask-image-scrollbar: linear-gradient(black, black);
+  --mask-size-scrollbar: var(--scrollbar-width) 100%;
+  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+  mask-position: 0 0, 100% 0;
+  mask-repeat: no-repeat, no-repeat;
+}
+
+.actorContainer {
+  width: 150px;
+  margin: 10px;
+  height: 330px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+  text-align: center;
+}
+
+.actorContainer img {
+  margin-top: 0;
+  padding-top: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+.actorInfo {
+  padding: 0 10px;
+}
+
+.actorInfo h2 {
+  font-family: var(--main-font);
+  color: var(--lightblack);
+  font-size: 16px;
+}
+
+.actorInfo h3 {
+  font-family: var(--main-font);
+  color: var(--lightblack);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.similarMovies {
+  margin-top: 250px;
+}
+
+@media screen and (max-width: 900px) {
+  .movieContainer {
+    flex-direction: column;
+  }
+  .movieMainContainer {
+    height: 500px;
+  }
+  .movieBackground {
+    top: 250px;
+  }
+  .moviePosterContainer img {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .movieTitle,
+  .movieDate,
+  .runtime,
+  .genre,
+  .subtitle,
+  .director,
+  .movieOverviewContainer {
+    color: var(--lightblack);
+  }
+  .movieInfoContainer {
+    align-items: top;
+    margin-left: 5%;
+  }
+  .genreContainer {
+    margin-left: 0;
+  }
+  .movieTitleContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  .movieTitleContainer2 {
+    margin-top: 0;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .movieTitle {
+    font-size: 24px;
+    margin-right: 0;
+  }
+  .movieInfo {
+    max-height: fit-content;
+  }
+  .moviePosterContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .buttonContainer {
+    padding-bottom: 50px;
+  }
+}
